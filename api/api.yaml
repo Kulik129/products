@@ -1,13 +1,13 @@
 openapi: 3.0.1
 info:
-  title: Документация по API сервиса pickup-point
-  description: Описание API сервиса pickup-point
+  title: Документация по API сервиса products
+  description: Описание API сервиса products
   contact:
     email: no-reply@liga.ru
   version: 0.1.0
 tags:
-  - name: PickupPoint
-    description: Пункт выдачи заказа
+  - name: Products
+    description: Получение товаров
 
 components:
   securitySchemes:
@@ -19,17 +19,17 @@ security:
   - bearerAuth: [ ]
 
 paths:
-  # Поиск всех пунктов выдачи
-  /v1/pickup-points/list:
+  # Получение всех продуктов
+  /v1/products/all:
     get:
       tags:
         - PickupPoint
       operationId: getPickupPoints
-      description: Поиск всех пунктов выдачи
+      description: Получение всех остатков товаров
       responses:
         200:
           description: Успешный ответ
           content:
             application/json:
               schema:
-                $ref: './definitions/request-data.yaml#/GetAllPickupPointsResponse'
+                $ref: './definitions/request-data.yaml#/GetAllStocksResponse'

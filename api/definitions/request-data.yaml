@@ -1,46 +1,75 @@
-
-GetAllPickupPointsRequest:
+Error:
+  description: Объект, содержащий информацию об ошибке
+  type: object
+  required:
+    - message
+  properties:
+    message:
+      description: Текст ошибки
+      type: string
+#Ответ:
+GetAllStocksResponse:
   type: object
   properties:
     payload:
-      $ref: '#/SearchPickupPoint'
-
-SearchPickupPoint:
+      $ref: '#/Payload'
+      description: Содержимое ответа
+    error:
+      $ref: '#/Error'
+      description: Содержимое ошибки
+Payload:
   type: object
   properties:
-    active:
-      type: boolean
-    searchQuery:
+    productId:
       type: string
-      description: Поисковый запрос (Поиск на странице осуществляется по полям "Адрес ПВЗ", "Оператор ПВЗ(ФИО)")
-    cityId:
+      description: ID товара
+    price:
+      type: long
+      description: Цена товара
+    brand:
       type: string
-      description: Регион пользователя
-
-GetAllPickupPointsResponse:
-  type: object
-  properties:
-    payload:
-      $ref: '#/GetAllPickupPointsResponsePayload'
-
-GetAllPickupPointsResponsePayload:
-  type: object
-  properties:
-    content:
-      type: array
-      items:
-        $ref: '#/PickupPointShortInfo'
-      description: Список пунктов выдачи заказов
-PickupPointShortInfo:
-  description: Пункт выдачи заказа
-  type: object
-  properties:
-    id:
+      description: Название бренда товара
+    description:
       type: string
-      description: Номер пункта выдачи заказа
+      description: Описание товара
     name:
       type: string
-      description: Название
-    postalCode:
+      description: Название товара
+    availability:
+      type: boolean
+      description: Доступность товара
+    color:
       type: string
-      description: Индекс
+      description: Цвет товара
+    oldPrice:
+      type: long
+      description: Старая цена товара
+    media:
+      type: array
+      description: Изображения товара
+      items:
+        $ref: '#/Media'
+    size:
+      type: array
+      description: Размеры товара
+      items:
+        $ref: '#/Size'
+Media:
+  type: object
+  properties:
+    link:
+      type: string
+      description: Ссылка на изображение
+
+Size:
+  type: object
+  properties:
+    sizeUS:
+      type: string
+      description: Американский размер
+    sizeRU:
+      type: string
+      description: Русский размер
+    length:
+      type: string
+      description: Длина стопы
