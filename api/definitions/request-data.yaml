@@ -1,0 +1,46 @@
+
+GetAllPickupPointsRequest:
+  type: object
+  properties:
+    payload:
+      $ref: '#/SearchPickupPoint'
+
+SearchPickupPoint:
+  type: object
+  properties:
+    active:
+      type: boolean
+    searchQuery:
+      type: string
+      description: Поисковый запрос (Поиск на странице осуществляется по полям "Адрес ПВЗ", "Оператор ПВЗ(ФИО)")
+    cityId:
+      type: string
+      description: Регион пользователя
+
+GetAllPickupPointsResponse:
+  type: object
+  properties:
+    payload:
+      $ref: '#/GetAllPickupPointsResponsePayload'
+
+GetAllPickupPointsResponsePayload:
+  type: object
+  properties:
+    content:
+      type: array
+      items:
+        $ref: '#/PickupPointShortInfo'
+      description: Список пунктов выдачи заказов
+PickupPointShortInfo:
+  description: Пункт выдачи заказа
+  type: object
+  properties:
+    id:
+      type: string
+      description: Номер пункта выдачи заказа
+    name:
+      type: string
+      description: Название
+    postalCode:
+      type: string
+      description: Индекс
