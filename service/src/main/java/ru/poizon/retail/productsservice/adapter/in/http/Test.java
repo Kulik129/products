@@ -1,4 +1,4 @@
-package ru.poizon.retail.productsservice;
+package ru.poizon.retail.productsservice.adapter.in.http;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;

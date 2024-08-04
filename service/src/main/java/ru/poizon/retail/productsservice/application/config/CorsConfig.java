@@ -1,4 +1,4 @@
-package ru.poizon.retail.productsservice;
+package ru.poizon.retail.productsservice.application.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
