@@ -8,15 +8,19 @@ Error:
       description: Текст ошибки
       type: string
 #Ответ:
-GetAllStocksResponse:
+GetAllProductsResponse:
   type: object
   properties:
     payload:
-      $ref: '#/Payload'
+      $ref: '#/Product'
       description: Содержимое ответа
     error:
       $ref: '#/Error'
       description: Содержимое ошибки
+Product:
+  type: array
+  items:
+    $ref: '#/Payload'
 Payload:
   type: object
   properties:

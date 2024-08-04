@@ -23,8 +23,8 @@ paths:
   /v1/products/all:
     get:
       tags:
-        - PickupPoint
-      operationId: getPickupPoints
+        - Product
+      operationId: getAllProducts
       description: Получение всех остатков товаров
       responses:
         200:
@@ -32,4 +32,4 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './definitions/request-data.yaml#/GetAllStocksResponse'
+                $ref: './definitions/request-data.yaml#/GetAllProductsResponse'
