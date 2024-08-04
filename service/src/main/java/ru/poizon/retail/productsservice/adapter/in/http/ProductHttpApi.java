@@ -5,21 +5,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import ru.poizon.retail.products.api.adapter.in.http.PickupPointApi;
-import ru.poizon.retail.productsapi.adapter.in.http.model.GetAllStocksResponseHttp;
+import ru.poizon.retail.products.api.adapter.in.http.ProductApi;
+import ru.poizon.retail.productsapi.adapter.in.http.model.GetAllProductsResponseHttp;
 import ru.poizon.retail.productsapi.adapter.in.http.model.MediaHttp;
 import ru.poizon.retail.productsapi.adapter.in.http.model.PayloadHttp;
 import ru.poizon.retail.productsapi.adapter.in.http.model.SizeHttp;
 
 import java.util.List;
 
-@Api(tags = "PickupPoint")
+@Api(tags = "Product")
 @RestController
 @RequiredArgsConstructor
-public class Test implements PickupPointApi {
-
+public class ProductHttpApi implements ProductApi {
     @Override
-    public Mono<GetAllStocksResponseHttp> getPickupPoints(ServerWebExchange exchange) {
+    public Mono<GetAllProductsResponseHttp> getAllProducts(ServerWebExchange exchange) {
         var media1 = MediaHttp.builder().link("https://cdn-img.poizonapp.com/pro-img/cut-img/20230801/d0686833ede446318e6a7809ac2b308d.jpg?x-oss-process=image/format,webp/resize,w_800").build();
         var media2 = MediaHttp.builder().link("https://cdn-img.poizonapp.com/pro-img/cut-img/20230801/d0d0a36169874e37b827c23547719b52.jpg?x-oss-process=image/format,webp/resize,w_800").build();
         var media3 = MediaHttp.builder().link("https://cdn-img.poizonapp.com/pro-img/cut-img/20230801/321c432e18584495a14aaed5f443591f.jpg?x-oss-process=image/format,webp/resize,w_800").build();
@@ -41,8 +40,7 @@ public class Test implements PickupPointApi {
                 .media(media)
                 .size(sizeList)
                 .build();
-        return Mono.just(GetAllStocksResponseHttp.builder()
-                        .payload(payload)
-                .build());
+
+        return Mono.just(GetAllProductsResponseHttp.builder().payload(List.of(payload, payload, payload, payload)).build());
     }
 }
