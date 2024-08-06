@@ -3,3 +3,31 @@ spring:
     name: service
   allowed:
     origins: http://localhost:3000
+#  r2dbc:
+#    url: r2dbc:postgresql://localhost:5432/productdb
+#    username: postgres
+#    password: 12345678
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.xml
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/productdb
+    username: postgres
+    password: 12345678
+    hikari:
+      maximum-pool-size: 5
+  liquibase:
+    enabled: true
+    change-log: classpath:/db.changelog/db.changelog-master.xml
+    url: jdbc:postgresql://localhost:5432/productdb
+    user: postgres
+    password: 12345678
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/productdb
+    username: postgres
+    password: 12345678

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ChangeSet for creating product table -->
+    <changeSet id="1" author="kulik.work@yandex.ru">
+        <createTable tableName="product">
+            <column name="product_id" type="varchar(50)">
+                <constraints primaryKey="true" primaryKeyName="client_product_reserve_id_pk" nullable="false" unique="true"/>
+            </column>
+            <column name="price" type="bigint"/>
+            <column name="brand" type="varchar(255)"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="availability" type="boolean"/>
+            <column name="color" type="varchar(255)"/>
+            <column name="old_price" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-sequence-product-id" author="kulik.work@yandex.ru">
+        <createSequence sequenceName="product_id_seq" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="product-id-value" author="kulik.work@yandex.ru">
+        <comment>Подключение SEQUENCE для генерации значений первичного ключа в виде String</comment>
+        <addDefaultValue
+                tableName="product"
+                columnName="product_id"
+                defaultValueSequenceNext="product_id_seq"/>
+    </changeSet>
+
+    <!-- ChangeSet for creating media table -->
+    <changeSet id="2" author="kulik.work@yandex.ru">
+        <createTable tableName="media">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="url" type="varchar(255)"/>
+            <column name="product_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="media" baseColumnNames="product_id"
+                                 referencedTableName="product" referencedColumnNames="product_id"
+                                 constraintName="fk_media_product"/>
+    </changeSet>
+
+    <!-- ChangeSet for creating size table -->
+    <changeSet id="3" author="kulik.work@yandex.ru">
+        <createTable tableName="size">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="size_us" type="varchar(255)"/>
+            <column name="size_ru" type="varchar(255)"/>
+            <column name="length" type="varchar(255)"/>
+            <column name="product_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="size" baseColumnNames="product_id"
+                                 referencedTableName="product" referencedColumnNames="product_id"
+                                 constraintName="fk_size_product"/>
+    </changeSet>
+
+</databaseChangeLog>

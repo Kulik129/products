@@ -10,6 +10,7 @@ import ru.poizon.retail.productsapi.adapter.in.http.model.GetAllProductsResponse
 import ru.poizon.retail.productsapi.adapter.in.http.model.MediaHttp;
 import ru.poizon.retail.productsapi.adapter.in.http.model.PayloadHttp;
 import ru.poizon.retail.productsapi.adapter.in.http.model.SizeHttp;
+import ru.poizon.retail.productsservice.adapter.out.http.db.ProductRepositoryImpl;
 
 import java.util.List;
 
@@ -17,8 +18,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ProductHttpApi implements ProductApi {
+
+    private final ProductRepositoryImpl repository;
+
     @Override
     public Mono<GetAllProductsResponseHttp> getAllProducts(ServerWebExchange exchange) {
+        /*
         var media1 = MediaHttp.builder().link("https://cdn-img.poizonapp.com/pro-img/cut-img/20230801/d0686833ede446318e6a7809ac2b308d.jpg?x-oss-process=image/format,webp/resize,w_800").build();
         var media2 = MediaHttp.builder().link("https://cdn-img.poizonapp.com/pro-img/cut-img/20230801/d0d0a36169874e37b827c23547719b52.jpg?x-oss-process=image/format,webp/resize,w_800").build();
         var media3 = MediaHttp.builder().link("https://cdn-img.poizonapp.com/pro-img/cut-img/20230801/321c432e18584495a14aaed5f443591f.jpg?x-oss-process=image/format,webp/resize,w_800").build();
@@ -41,6 +46,11 @@ public class ProductHttpApi implements ProductApi {
                 .size(sizeList)
                 .build();
 
-        return Mono.just(GetAllProductsResponseHttp.builder().payload(List.of(payload, payload, payload, payload)).build());
+
+        return Mono.just(GetAllProductsResponseHttp.builder().payload(List.of()).build());
+
+         */
+
+        return null;
     }
 }
