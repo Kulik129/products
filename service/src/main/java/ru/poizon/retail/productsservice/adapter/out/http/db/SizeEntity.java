@@ -1,11 +1,11 @@
 package ru.poizon.retail.productsservice.adapter.out.http.db;
 
-import jakarta.persistence.Column;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table(value = "size")
@@ -14,12 +14,12 @@ import org.springframework.data.relational.core.mapping.Table;
 @Accessors(chain = true)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class SizeEntity {
-    @Column(name = "size_us")
+    @Column("size_us")
     private String sizeUS;
 
-    @Column(name = "size_ru")
+    @Column("size_ru")
     private String sizeRU;
 
-    @Column(name = "length")
+    @Column("length")
     private String length;
 }

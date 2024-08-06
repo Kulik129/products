@@ -1,16 +1,14 @@
 package ru.poizon.retail.productsservice.adapter.out.http.db;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import ru.poizon.retail.productsservice.domain.model.Media;
-import ru.poizon.retail.productsservice.domain.model.Size;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 
@@ -22,28 +20,28 @@ import java.util.List;
 public class ProductEntity {
 
     @Id
-    @Column(name = "product_id")
+    @Column("product_id")
     private String productId;
 
-    @Column(name = "price")
+    @Column("price")
     private Long price;
 
-    @Column(name = "brand")
+    @Column("brand")
     private String brand;
 
-    @Column(name = "description")
+    @Column("description")
     private String description;
 
-    @Column(name = "name")
+    @Column("name")
     private String name;
 
-    @Column(name = "availability")
+    @Column("availability")
     private Boolean availability;
 
-    @Column(name = "color")
+    @Column("color")
     private String color;
 
-    @Column(name = "old_price")
+    @Column("old_price")
     private Long oldPrice;
 
     @Transient
