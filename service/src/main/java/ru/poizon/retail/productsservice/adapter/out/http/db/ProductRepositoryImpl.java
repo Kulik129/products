@@ -3,6 +3,7 @@ package ru.poizon.retail.productsservice.adapter.out.http.db;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
+import ru.poizon.retail.productsservice.adapter.out.http.db.r2dbc.ProductR2dbcRepository;
 import ru.poizon.retail.productsservice.domain.model.Product;
 import ru.poizon.retail.productsservice.domain.repository.ProductRepository;
 

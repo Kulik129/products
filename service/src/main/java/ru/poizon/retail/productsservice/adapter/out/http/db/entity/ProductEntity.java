@@ -1,4 +1,4 @@
-package ru.poizon.retail.productsservice.adapter.out.http.db;
+package ru.poizon.retail.productsservice.adapter.out.http.db.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

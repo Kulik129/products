@@ -1,5 +1,6 @@
-package ru.poizon.retail.productsservice.adapter.out.http.db;
+package ru.poizon.retail.productsservice.adapter.out.http.db.entity;
 
+import org.springframework.data.annotation.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,11 @@ import org.springframework.data.relational.core.mapping.Table;
 @Accessors(chain = true)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class SizeEntity {
+
+    @Id
+    @Column("id")
+    private Long id;
+
     @Column("size_us")
     private String sizeUS;
 
@@ -22,4 +28,7 @@ public class SizeEntity {
 
     @Column("length")
     private String length;
+
+    @Column("product_id")
+    private String productId;
 }
