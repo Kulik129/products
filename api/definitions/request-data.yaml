@@ -1,79 +1,136 @@
-Error:
-  description: Объект, содержащий информацию об ошибке
-  type: object
-  required:
-    - message
-  properties:
-    message:
-      description: Текст ошибки
-      type: string
-#Ответ:
-GetAllProductsResponse:
-  type: object
-  properties:
-    payload:
-      $ref: '#/Product'
-      description: Содержимое ответа
-    error:
-      $ref: '#/Error'
-      description: Содержимое ошибки
-Product:
-  type: array
-  items:
-    $ref: '#/Payload'
-Payload:
-  type: object
-  properties:
-    productId:
-      type: string
-      description: ID товара
-    price:
-      type: long
-      description: Цена товара
-    brand:
-      type: string
-      description: Название бренда товара
-    description:
-      type: string
-      description: Описание товара
-    name:
-      type: string
-      description: Название товара
-    availability:
-      type: boolean
-      description: Доступность товара
-    color:
-      type: string
-      description: Цвет товара
-    oldPrice:
-      type: long
-      description: Старая цена товара
-    media:
-      type: array
-      description: Изображения товара
-      items:
-        $ref: '#/Media'
-    size:
-      type: array
-      description: Размеры товара
-      items:
-        $ref: '#/Size'
-Media:
-  type: object
-  properties:
-    link:
-      type: string
-      description: Ссылка на изображение
+components:
+  schemas:
+    Error:
+      description: Объект, содержащий информацию об ошибке
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          description: Текст ошибки
+          type: string
 
-Size:
-  type: object
-  properties:
-    sizeUS:
-      type: string
-      description: Американский размер
-    sizeRU:
-      type: string
-      description: Русский размер
-    length:
-      type: string
-      description: Длина стопы
+    GetAllProductsResponse:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/Product'
+          description: Содержимое ответа
+        error:
+          $ref: '#/components/schemas/Error'
+          description: Содержимое ошибки
+
+    Product:
+      type: array
+      items:
+        $ref: '#/components/schemas/Payload'
+
+    Payload:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: ID товара
+        price:
+          type: integer
+          format: int64
+          description: Цена товара
+        brand:
+          type: string
+          description: Название бренда товара
+        description:
+          type: string
+          description: Описание товара
+        name:
+          type: string
+          description: Название товара
+        availability:
+          type: boolean
+          description: Доступность товара
+        color:
+          type: string
+          description: Цвет товара
+        oldPrice:
+          type: integer
+          format: int64
+          description: Старая цена товара
+        media:
+          type: array
+          description: Изображения товара
+          items:
+            $ref: '#/components/schemas/Media'
+        size:
+          type: array
+          description: Размеры товара
+          items:
+            $ref: '#/components/schemas/Size'
+
+    Media:
+      type: object
+      properties:
+        link:
+          type: string
+          description: Ссылка на изображение
+
+    Size:
+      type: object
+      properties:
+        sizeUS:
+          type: string
+          description: Американский размер
+        sizeRU:
+          type: string
+          description: Русский размер
+        length:
+          type: string
+          description: Длина стопы
+
+    GetProductResponse:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/Article'
+          description: Содержимое ответа
+        error:
+          $ref: '#/components/schemas/Error'
+          description: Содержимое ошибки
+
+    Article:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: ID товара
+        price:
+          type: integer
+          format: int64
+          description: Цена товара
+        brand:
+          type: string
+          description: Название бренда товара
+        description:
+          type: string
+          description: Описание товара
+        name:
+          type: string
+          description: Название товара
+        availability:
+          type: boolean
+          description: Доступность товара
+        color:
+          type: string
+          description: Цвет товара
+        oldPrice:
+          type: integer
+          format: int64
+          description: Старая цена товара
+        media:
+          type: array
+          description: Изображения товара
+          items:
+            $ref: '#/components/schemas/Media'
+        size:
+          type: array
+          description: Размеры товара
+          items:
+            $ref: '#/components/schemas/Size'

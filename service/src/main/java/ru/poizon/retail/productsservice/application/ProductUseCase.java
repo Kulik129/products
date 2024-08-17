@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import ru.poizon.retail.productsapi.adapter.in.http.model.ArticleHttp;
 import ru.poizon.retail.productsapi.adapter.in.http.model.PayloadHttp;
 import ru.poizon.retail.productsservice.adapter.out.http.db.converter.MapperData;
 import ru.poizon.retail.productsservice.domain.model.Media;
@@ -37,5 +38,19 @@ public class ProductUseCase {
                         })
                 )
                 .collectList();
+    }
+
+    public Mono<ArticleHttp> getProduct(String productId) {
+        return productRepository.findProductById(productId)
+                .flatMap(product ->
+                        Mono.zip(
+                                sizeRepository.getSizes(productId),
+                                mediaRepository.getMedia(productId)
+                        ).map(tuple -> {
+                            List<Size> sizes = tuple.getT1();
+                            List<Media> media = tuple.getT2();
+
+                            return mapperData.mapArticle(product, sizes, media);
+                        }));
     }
 }

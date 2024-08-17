@@ -9,4 +9,6 @@ import java.util.List;
 public interface ProductRepository {
 
     Mono<List<Product>> findAllProducts();
+
+    Mono<Product> findProductById(String id);
 }

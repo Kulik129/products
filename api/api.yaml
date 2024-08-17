@@ -19,7 +19,6 @@ security:
   - bearerAuth: [ ]
 
 paths:
-  # Получение всех продуктов
   /v1/products/all:
     get:
       tags:
@@ -32,4 +31,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './definitions/request-data.yaml#/GetAllProductsResponse'
+                $ref: './definitions/request-data.yaml#/components/schemas/GetAllProductsResponse'
+
+  /v1/product/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      tags:
+        - Product
+      operationId: getProductById
+      description: Получение товара по ID
+      responses:
+        200:
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: './definitions/request-data.yaml#/components/schemas/GetProductResponse'

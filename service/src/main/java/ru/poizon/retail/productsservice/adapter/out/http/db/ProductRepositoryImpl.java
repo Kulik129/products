@@ -31,4 +31,19 @@ public class ProductRepositoryImpl implements ProductRepository {
                         .build())
                 .collectList();
     }
+
+    @Override
+    public Mono<Product> findProductById(String id) {
+        return repository.findById(id)
+                .map(product -> Product.builder()
+                        .productId(product.getProductId())
+                        .name(product.getName())
+                        .price(product.getPrice())
+                        .brand(product.getBrand())
+                        .description(product.getDescription())
+                        .color(product.getColor())
+                        .availability(product.getAvailability())
+                        .oldPrice(product.getOldPrice())
+                        .build());
+    }
 }
