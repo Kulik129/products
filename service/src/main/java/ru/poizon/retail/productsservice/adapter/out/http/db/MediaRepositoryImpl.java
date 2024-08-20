@@ -19,6 +19,7 @@ public class MediaRepositoryImpl implements MediaRepository {
     public Mono<List<Media>> getMedia(String productId) {
         return repository.findByProductId(productId)
                 .map(it -> Media.builder()
+                        .id(it.getId())
                         .url(it.getUrl())
                         .build())
                 .collectList();

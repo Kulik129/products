@@ -19,6 +19,7 @@ public class SizeRepositoryImpl implements SizeRepository {
     public Mono<List<Size>> getSizes(String productId) {
         return repository.findAllByProductId(productId)
                 .map(it -> Size.builder()
+                        .id(it.getId())
                         .sizeUS(it.getSizeUS())
                         .sizeRU(it.getSizeRU())
                         .length(it.getLength())

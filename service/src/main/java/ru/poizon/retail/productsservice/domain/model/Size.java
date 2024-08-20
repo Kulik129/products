@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Slf4j
 public class Size {
+    private Long id;
     private String sizeUS;
     private String sizeRU;
     private String length;

@@ -12,5 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Slf4j
 public class Media {
+    private Long id;
     private String url;
 }

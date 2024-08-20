@@ -68,6 +68,9 @@ components:
     Media:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
         link:
           type: string
           description: Ссылка на изображение
@@ -75,6 +78,9 @@ components:
     Size:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
         sizeUS:
           type: string
           description: Американский размер

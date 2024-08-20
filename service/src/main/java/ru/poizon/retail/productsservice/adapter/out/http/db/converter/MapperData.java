@@ -22,6 +22,7 @@ public interface MapperData {
     default List<MediaHttp> mapMedia(List<Media> media) {
         return media.stream()
                 .map(it -> MediaHttp.builder()
+                        .id(it.getId())
                         .link(it.getUrl())
                         .build())
                 .toList();
